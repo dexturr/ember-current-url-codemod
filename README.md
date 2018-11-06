@@ -11,3 +11,9 @@ If you do not have `jscodeshift` installed globally, then run:
 
 To perform the transformation run the following command:
 `jscodeshift -t https://raw.githubusercontent.com/dexturr/ember-current-url-codemod/master/index.js ./tests`
+
+## TODO
+
+Use jscodeshift project strucutre
+Add tests
+Move QP's into object literals in codemod
