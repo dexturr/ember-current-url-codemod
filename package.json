@@ -1,0 +1,25 @@
+{
+  "name": "ember-current-url-codemod",
+  "version": "0.0.1",
+  "description": "A code mod for ember apps to migrate to using ember-current-url",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo 'No tests!'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dexturr/ember-current-url-codemod.git"
+  },
+  "keywords": [
+    "ember",
+    "codemod",
+    "jscodeshift",
+    "currentURL"
+  ],
+  "author": "Dexter Edwards",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dexturr/ember-current-url-codemod/issues"
+  },
+  "homepage": "https://github.com/dexturr/ember-current-url-codemod#readme"
+}
