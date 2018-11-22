@@ -1,37 +1,40 @@
 export default function transformer(file, api) {
-    const j = api.jscodeshift;
-  
-    return j(file.source)
-      .find(j.CallExpression, {
-        arguments: [{
-          type: 'CallExpression',
-          callee: {
-            type: 'Identifier',
-            name: 'currentURL',
-          },
-        }],
+  const j = api.jscodeshift;
+
+  return j(file.source)
+    .find(j.CallExpression, {
+      arguments: [{
+        type: 'CallExpression',
         callee: {
-          object: {
-            type: 'Identifier',
-            name: 'assert',
-          },
-          property: {
-            type: 'Identifier',
-            name: 'equal',
-          },
+          type: 'Identifier',
+          name: 'currentURL',
         },
-      })
-      .forEach((path) => {
-        const { value } = path;
-        const remainingArgs = value.arguments.slice(1);
-        const callExpression = j.callExpression(
+      }],
+      callee: {
+        object: {
+          type: 'Identifier',
+          name: 'assert',
+        },
+        property: {
+          type: 'Identifier',
+          name: 'equal',
+        },
+      },
+    })
+    .forEach((path) => {
+      const { value } = path;
+      const remainingArgs = value.arguments.slice(1);
+      const callExpression = j.callExpression(
+        j.memberExpression(
           j.memberExpression(
             j.identifier('assert'),
-            j.identifier('currentUrl')
+            j.identifier('currentUrl'),
           ),
-          remainingArgs
-        );
-        path.replace(callExpression);
-      })
-      .toSource();
-  }
+          j.identifier('equals')
+        ),
+        remainingArgs
+      );
+      path.replace(callExpression);
+    })
+    .toSource();
+}
