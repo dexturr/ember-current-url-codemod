@@ -28,7 +28,7 @@ export default function transformer(file, api) {
         j.memberExpression(
           j.memberExpression(
             j.identifier('assert'),
-            j.identifier('currentUrl'),
+            j.identifier('url'),
           ),
           j.identifier('equals')
         ),
